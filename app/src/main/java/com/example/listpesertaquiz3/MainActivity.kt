@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.listpesertaquiz3.ui.theme.ListPesertaQuiz3Theme
-import com.example.listpesertaquiz3.ui.theme.Purple80
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,7 +95,7 @@ fun GreetingPreview() {
         Greeting("Android")
         CalculatorButton(
             symbol = "prapta".trim().substring(0,1),
-            color = Purple80,
+//            color = Purple80,
             modifier = Modifier
 //                .aspectRatio(1f)
                 .height(100.dp)

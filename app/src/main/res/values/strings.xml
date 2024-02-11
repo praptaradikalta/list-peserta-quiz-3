@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">List Peserta Quiz 3</string>
+<!--    <string name="app_name">List Peserta Quiz 3</string>-->
+    <string name="aisyah">Aisyah (HTS-00001)</string>
+    <string name="pekalongan">Pekalongan</string>
+    <string name="adinda">Adinda (HTS-00002)</string>
+    <string name="jakarta">Jakarta</string>
+    <string name="indriani">Indriani (HTS-00003)</string>
+    <string name="gorontalo">Gorontalo</string>
+    <string name="chandra">Chandra (HTS-00004)</string>
+    <string name="jambi">Jambi</string>
+    <string name="ummu_sualim">Ummu Sualim (HTS-00005)</string>
+    <string name="adinda06">Adinda (HTS-00006)</string>
+    <string name="windriani">Windriani (HTS-00007)</string>
+    <string name="zainab">Zainab (HTS-00008)</string>
+
 </resources>
