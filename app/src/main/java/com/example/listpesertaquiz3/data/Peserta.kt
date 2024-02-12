@@ -8,7 +8,7 @@ data class Peserta (
     val umur: Int,
     @StringRes val domisili: Int
 )
-val Pesertas = listOf(
+val pesertas = listOf(
     Peserta(R.string.aisyah, 18, R.string.pekalongan),
     Peserta(R.string.adinda, 21, R.string.jakarta),
     Peserta(R.string.indriani, 19, R.string.gorontalo),

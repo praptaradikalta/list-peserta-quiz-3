@@ -1,5 +1,5 @@
 <resources>
-<!--    <string name="app_name">List Peserta Quiz 3</string>-->
+    <string name="app_name">List Peserta Quiz 3</string>
     <string name="aisyah">Aisyah (HTS-00001)</string>
     <string name="pekalongan">Pekalongan</string>
     <string name="adinda">Adinda (HTS-00002)</string>
@@ -12,5 +12,11 @@
     <string name="adinda06">Adinda (HTS-00006)</string>
     <string name="windriani">Windriani (HTS-00007)</string>
     <string name="zainab">Zainab (HTS-00008)</string>
+    <string name="tahun">%d tahun</string>
+    <string name="profile_profile">Profil - profil berikut adalah para peserta yang telah disesuaikan dengan preferensimu</string>
+    <string name="pencarian">Pencarian Calon Pasangan</string>
+    <string name="home">Home</string>
+    <string name="cari">Pencarian</string>
+    <string name="profil">Profil</string>
 
 </resources>
