@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -26,9 +27,20 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material.icons.rounded.ArtTrack
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.List
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.ViewList
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -85,34 +97,7 @@ fun PesertaApp() {
             TopAppBar()
         },
         bottomBar = {
-            BottomAppBar() {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    IconButton(
-                        onClick = { /* Handle navigation icon click */ }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Home,
-                            contentDescription = "Home")
-                    }
-                    IconButton(
-                        onClick = { /* Handle navigation icon click */ }
-                    ) {
-                        Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
-                    }
-
-                    IconButton(
-                        onClick = { /* Handle navigation icon click */ }
-                    ) {
-                        Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "Profile")
-                    }
-                }
-
-
-            }
-
+            BwhAppBar()
         }
     ) { it ->
         LazyColumn(contentPadding = it) {
@@ -150,45 +135,93 @@ fun PesertaItem(
                 )
             Spacer(Modifier.width(10.dp))
             InfoPeserta(peserta.nama, peserta.umur,peserta.domisili)
-
-//                DogItemButton(
-//                    expanded = expanded,
-//                    onClick = { expanded = !expanded },
-//                )
+            Spacer(modifier = Modifier.weight(1f))
+            DetailButton(
+                expanded = expanded,
+                onClick = { /*TODO*/ })
         }
-//            if (expanded) {
-//                DogHobby(
-//                    dog.hobbies, modifier = Modifier.padding(
-//                        start = dimensionResource(R.dimen.padding_medium),
-//                        top = dimensionResource(R.dimen.padding_small),
-//                        bottom = dimensionResource(R.dimen.padding_medium),
-//                        end = dimensionResource(R.dimen.padding_medium)
-//                    )
-//                )
-//            }
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBar(modifier: Modifier = Modifier) {
     Box(modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
     ) {
         Column {
-            Text(
-                text = stringResource(R.string.pencarian),
-                style = MaterialTheme.typography.displayMedium
-            )
+            Image(
+                modifier = Modifier.size(width = 5.dp, height = 8.dp ),
+                painter = painterResource(R.drawable.profile_2) , contentDescription = "Icon Default" )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = stringResource(R.string.pencarian),
+                    style = MaterialTheme.typography.displayMedium
+                )
+                Icon(
+                    imageVector = Icons.Rounded.ArtTrack,
+//                    painter = painterResource( R.drawable.baseline_swap_horiz_24),
+                    contentDescription = null )
+            }
+            Spacer(Modifier.height(10.dp))
             Text(
                 text = stringResource(R.string.profile_profile),
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.labelSmall
             )
         }
     }
-
-
 }
 
+@Composable
+fun BwhAppBar(modifier: Modifier = Modifier){
+    BottomAppBar(
+        containerColor = MaterialTheme.colorScheme.tertiaryContainer
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
 
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Home,
+                    contentDescription = "Home"
+                )
+                Text(
+                    text = stringResource(R.string.home),
+                    style = MaterialTheme.typography.bodySmall
+                )
+
+            }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(
+                    imageVector = Icons.Outlined.Search,
+                    contentDescription = "Cari"
+                )
+                Text(
+                    text = stringResource(R.string.cari),
+                    style = MaterialTheme.typography.bodySmall
+                )
+
+            }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(
+                    imageVector = Icons.Outlined.AccountCircle,
+                    contentDescription = "Home"
+                )
+                Text(
+                    text = stringResource(R.string.profil),
+                    style = MaterialTheme.typography.bodySmall
+                )
+
+            }
+        }
+    }
+}
 
 @Composable
 fun PesertaIcon(
@@ -242,6 +275,23 @@ fun InfoPeserta(
             )
         }
     }
+}
+@Composable
+private fun DetailButton(
+    expanded: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+){
+    IconButton(
+        onClick = onClick,
+        modifier = modifier
+    ) {
+        Icon(
+            imageVector = Icons.Filled.ArrowForwardIos,
+            contentDescription = "Arrow Detail"
+        )
+    }
+
 }
 
 /**
