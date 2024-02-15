@@ -82,7 +82,9 @@ class MainActivity : ComponentActivity() {
             ListPesertaQuiz3Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 25.dp)
                 ) {
                     PesertaApp()
                 }
@@ -93,6 +95,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PesertaApp() {
     Scaffold(
+        modifier = Modifier.padding(top=25.dp),
         topBar = {
             TopAppBar()
         },
@@ -116,7 +119,6 @@ fun PesertaItem(
     peserta: Peserta,
     modifier: Modifier = Modifier
 ) {
-    var expanded by remember { mutableStateOf(false) }
 
     Card(
         modifier = modifier
@@ -128,16 +130,16 @@ fun PesertaItem(
                 .fillMaxWidth()
                 .padding(dimensionResource(R.dimen.padding_small))
         ) {
+            Spacer(Modifier.width(10.dp))
             PesertaIcon(
                 nama = peserta.nama,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
+
                 )
             Spacer(Modifier.width(10.dp))
             InfoPeserta(peserta.nama, peserta.umur,peserta.domisili)
             Spacer(modifier = Modifier.weight(1f))
             DetailButton(
-                expanded = expanded,
                 onClick = { /*TODO*/ })
         }
     }
@@ -145,24 +147,21 @@ fun PesertaItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBar(modifier: Modifier = Modifier) {
-    Box(modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+fun TopAppBar() {
+    Box(modifier = Modifier.padding(horizontal = 5.dp, vertical = 10.dp)
     ) {
         Column {
-            Image(
-                modifier = Modifier.size(width = 5.dp, height = 8.dp ),
-                painter = painterResource(R.drawable.profile_2) , contentDescription = "Icon Default" )
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     text = stringResource(R.string.pencarian),
-                    style = MaterialTheme.typography.displayMedium
+                    style = MaterialTheme.typography.displayLarge
                 )
                 Icon(
+                    modifier = Modifier.size(35.dp),
                     imageVector = Icons.Rounded.ArtTrack,
-//                    painter = painterResource( R.drawable.baseline_swap_horiz_24),
                     contentDescription = null )
             }
             Spacer(Modifier.height(10.dp))
@@ -175,10 +174,9 @@ fun TopAppBar(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BwhAppBar(modifier: Modifier = Modifier){
-    BottomAppBar(
-        containerColor = MaterialTheme.colorScheme.tertiaryContainer
-    ) {
+fun BwhAppBar(){
+    BottomAppBar()
+    {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -188,34 +186,40 @@ fun BwhAppBar(modifier: Modifier = Modifier){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Icon(
+                    modifier = Modifier
+                        .size(40.dp),
                     imageVector = Icons.Outlined.Home,
                     contentDescription = "Home"
                 )
                 Text(
                     text = stringResource(R.string.home),
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.displayMedium
                 )
 
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Icon(
+                    modifier = Modifier
+                        .size(40.dp),
                     imageVector = Icons.Outlined.Search,
                     contentDescription = "Cari"
                 )
                 Text(
                     text = stringResource(R.string.cari),
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.displayMedium
                 )
 
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Icon(
+                    modifier = Modifier
+                        .size(40.dp),
                     imageVector = Icons.Outlined.AccountCircle,
                     contentDescription = "Home"
                 )
                 Text(
                     text = stringResource(R.string.profil),
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.displayMedium
                 )
 
             }
@@ -226,7 +230,6 @@ fun BwhAppBar(modifier: Modifier = Modifier){
 @Composable
 fun PesertaIcon(
     @StringRes nama: Int,
-    modifier: Modifier = Modifier,
     color: Color = Color.White,
 
 ) {
@@ -278,7 +281,6 @@ fun InfoPeserta(
 }
 @Composable
 private fun DetailButton(
-    expanded: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
